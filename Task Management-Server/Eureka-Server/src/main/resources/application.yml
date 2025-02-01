@@ -1,0 +1,15 @@
+server:
+  port: 8070  # Eureka dashboard port
+
+spring:
+  application:
+    name: EUREKA-SERVER  # Service name (not required to register itself)
+
+eureka:
+  instance:
+    hostname: localhost  # Change if running on a different machine
+  client:
+    register-with-eureka: false  # Eureka does NOT register itself
+    fetch-registry: false        # No need to fetch registry as it's the server
+    service-url:
+      defaultZone: http://localhost:8070/eureka/

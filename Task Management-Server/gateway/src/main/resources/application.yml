@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - StripPrefix=1
+
+        - id: TASK-SERVICE
+          uri: lb://TASK-SERVICE
+          predicates:
+            - Path=/task-service/**
+          filters:
+            - StripPrefix=1
+
+        - id: SUBMISSION-SERVICE
+          uri: lb://SUBMISSION-SERVICE
+          predicates:
+            - Path=/submission-service/**
+          filters:
+            - StripPrefix=1
+
+    globalcors:
+      cors-configurations:
+        '[/**]':
+          allowedOrigins: "*"
+          allowedMethods: "*"
+          allowedHeaders: "*"
+
+server:
+  port: 5000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8070/eureka/
+  instance:
+    prefer-ip-address: true

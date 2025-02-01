@@ -1,0 +1,30 @@
+spring:
+  application:
+      name: TASK-SERVICE
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/Task_service
+    username: root
+    password: Mustafa@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+
+server:
+  port: 5002
+
+
+userServiceURL: http://localhost:5001
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8070/eureka/
